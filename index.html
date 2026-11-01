@@ -1,13 +1,303 @@
-<DOCTYPE html>    
-  <html>
-  <head>
-    <title>My first Website</title>
-  </head>  
-  <body>
-    <h1>Welcome to my Website</h1>
-    <p>My name is Yariela. </p>
-    <p>Im learning how to build a website.</p>
-    <button>Click me</button>
-  </body>
-  </html>  
-    
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mix My Moment</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 30px 16px;
+    font-family: Arial, sans-serif;
+    background: #17152b;
+    color: white;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+}
+
+h1 {
+    font-size: 42px;
+    text-align: center;
+    color: #ffcc70;
+}
+
+.intro {
+    text-align: center;
+    color: #d5d1e5;
+    line-height: 1.6;
+}
+
+.panel {
+    background: #28243e;
+    padding: 25px;
+    border-radius: 18px;
+    margin-top: 25px;
+}
+
+label {
+    display: block;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+select {
+    width: 100%;
+    padding: 13px;
+    border-radius: 9px;
+    border: none;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 10px;
+    background: #ffcc70;
+    color: #17152b;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#result {
+    display: none;
+    background: #fff1d8;
+    color: #28243e;
+    padding: 22px;
+    border-radius: 15px;
+    margin-top: 25px;
+}
+
+#result h2 {
+    color: #8a4cbb;
+}
+
+footer {
+    text-align: center;
+    margin-top: 35px;
+    color: #aaa5bf;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>✨ MIX MY MOMENT</h1>
+
+    <p class="intro">
+        Stop overthinking. Start experiencing.
+        Let's turn an ordinary moment into an adventure!
+    </p>
+
+    <div class="panel">
+
+        <h2>Create your mission</h2>
+
+        <label for="people">Who is participating?</label>
+        <select id="people">
+            <option>Just me</option>
+            <option>Two people</option>
+            <option>Friends</option>
+            <option>Family</option>
+        </select>
+
+        <label for="budget">What's your budget?</label>
+        <select id="budget">
+            <option value="0">Free</option>
+            <option value="5">Up to $5</option>
+            <option value="15">Up to $15</option>
+            <option value="30">Up to $30</option>
+        </select>
+
+        <label for="time">How much time do you have?</label>
+        <select id="time">
+            <option value="15">15 minutes</option>
+            <option value="30">30 minutes</option>
+            <option value="60">1 hour</option>
+            <option value="120">2 hours</option>
+        </select>
+
+        <label for="vibe">What's your vibe?</label>
+        <select id="vibe">
+            <option value="creative">Creative</option>
+            <option value="adventure">Adventure</option>
+            <option value="relax">Relaxing</option>
+            <option value="fun">Just for fun</option>
+        </select>
+
+        <button onclick="createMission()">
+            CREATE MY MISSION ✨
+        </button>
+
+    </div>
+
+    <div id="result">
+        <h2>Your mission is ready!</h2>
+        <h3 id="missionTitle"></h3>
+        <p id="missionDescription"></p>
+        <p id="missionDetails"></p>
+
+        <button onclick="shareMission()">
+            SHARE MY MISSION
+        </button>
+
+        <button onclick="createMission()">
+            GIVE ME ANOTHER MISSION
+        </button>
+    </div>
+
+    <footer>
+        Made for moments worth remembering.
+    </footer>
+
+</div>
+
+<script>
+
+const missions = [
+    {
+        title: "The Photo Hunter 📸",
+        description: "Find five interesting things around you and take creative pictures of them.",
+        vibe: "creative",
+        cost: 0,
+        time: 15
+    },
+    {
+        title: "The Mini Adventure 🌳",
+        description: "Explore a nearby public place and discover something you've never noticed.",
+        vibe: "adventure",
+        cost: 0,
+        time: 30
+    },
+    {
+        title: "The Happiness Mission 💛",
+        description: "Do three small things that make you or someone else smile.",
+        vibe: "fun",
+        cost: 0,
+        time: 15
+    },
+    {
+        title: "The Creative Kitchen 🍓",
+        description: "Create a fun snack using ingredients you already have. Give it a creative name!",
+        vibe: "creative",
+        cost: 0,
+        time: 30
+    },
+    {
+        title: "The Sunset Mission 🌅",
+        description: "Find a safe place to watch the sunset and take a picture worth keeping.",
+        vibe: "relax",
+        cost: 0,
+        time: 60
+    },
+    {
+        title: "The $5 Challenge 💰",
+        description: "Find a fun, inexpensive treat or activity and make the most of five dollars.",
+        vibe: "adventure",
+        cost: 5,
+        time: 60
+    },
+    {
+        title: "The Memory Maker 🎉",
+        description: "Invent a silly group challenge and create a memory together.",
+        vibe: "fun",
+        cost: 0,
+        time: 30
+    },
+    {
+        title: "The Reset Moment 🌸",
+        description: "Take a break, enjoy a peaceful moment, and write down three things you appreciate.",
+        vibe: "relax",
+        cost: 0,
+        time: 15
+    }
+];
+
+function createMission() {
+
+    const budget = Number(
+        document.getElementById("budget").value
+    );
+
+    const time = Number(
+        document.getElementById("time").value
+    );
+
+    const vibe = document.getElementById("vibe").value;
+
+    const available = missions.filter(m =>
+        m.vibe === vibe &&
+        m.cost <= budget &&
+        m.time <= time
+    );
+
+    const options = available.length > 0
+        ? available
+        : missions.filter(m =>
+            m.cost <= budget && m.time <= time
+        );
+
+    if (options.length === 0) {
+        alert("Try increasing your available time!");
+        return;
+    }
+
+    const mission = options[
+        Math.floor(Math.random() * options.length)
+    ];
+
+    document.getElementById("missionTitle").textContent =
+        mission.title;
+
+    document.getElementById("missionDescription").textContent =
+        mission.description;
+
+    document.getElementById("missionDetails").textContent =
+        "Budget: $" + mission.cost +
+        " | Estimated time: " + mission.time + " minutes";
+
+    document.getElementById("result").style.display = "block";
+
+}
+
+function shareMission() {
+
+    const title = document.getElementById("missionTitle").textContent;
+    const description = document.getElementById("missionDescription").textContent;
+
+    const text = "My Mix My Moment mission: " +
+        title + " " + description;
+
+    if (navigator.share) {
+        navigator.share({
+            title: "Mix My Moment",
+            text: text,
+            url: window.location.href
+        });
+    } else if (navigator.clipboard) {
+        navigator.clipboard.writeText(text)
+            .then(() => alert("Mission copied! Share it with your friends."));
+    } else {
+        alert(text);
+    }
+
+}
+
+</script>
+
+</body>
+</html>
