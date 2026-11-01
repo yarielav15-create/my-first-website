@@ -4,299 +4,561 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mix My Moment</title>
+<title>Moments in a Minute | Little ideas. Big memories.</title>
+<meta name="description" content="Discover fun little adventures, creative challenges and memorable moments. Make today a little more exciting!">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
 
 <style>
-* {
-    box-sizing: border-box;
+:root {
+  --purple: #7048D8;
+  --coral: #F27E91;
+  --mint: #55CBB5;
+  --yellow: #FFD66B;
+  --ink: #29243B;
+  --muted: #777487;
+  --background: #FFFFFF;
+  --soft: #F8F6FF;
 }
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
-    margin: 0;
-    padding: 30px 16px;
-    font-family: Arial, sans-serif;
-    background: #17152b;
-    color: white;
+  margin: 0;
+  background: var(--background);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
 }
 
-.container {
-    max-width: 600px;
-    margin: auto;
+button, select { font: inherit; }
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 8%;
+  border-bottom: 1px solid #F0EDF6;
+}
+
+.logo {
+  font-family: 'Nunito', sans-serif;
+  font-size: 23px;
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--purple);
+}
+
+.logo span { color: var(--coral); }
+
+.logo small {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.hero {
+  max-width: 1100px;
+  margin: auto;
+  padding: 85px 24px 55px;
+  text-align: center;
+  position: relative;
+}
+
+.eyebrow {
+  display: inline-block;
+  background: #F1ECFF;
+  color: var(--purple);
+  border-radius: 30px;
+  padding: 9px 16px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
 }
 
 h1 {
-    font-size: 42px;
-    text-align: center;
-    color: #ffcc70;
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(43px, 7vw, 76px);
+  line-height: 1.08;
+  margin: 24px 0 16px;
+  font-weight: 900;
+  letter-spacing: -2px;
 }
 
-.intro {
-    text-align: center;
-    color: #d5d1e5;
-    line-height: 1.6;
+h1 .purple { color: var(--purple); }
+h1 .coral { color: var(--coral); }
+
+.hero-description {
+  max-width: 550px;
+  margin: auto;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.8;
 }
 
-.panel {
-    background: #28243e;
-    padding: 25px;
-    border-radius: 18px;
-    margin-top: 25px;
+.decorations {
+  font-size: 30px;
+  margin: 22px 0;
 }
 
-label {
-    display: block;
-    margin-top: 18px;
-    margin-bottom: 8px;
-    font-weight: bold;
+.main-card {
+  max-width: 760px;
+  margin: 20px auto 75px;
+  padding: 35px;
+  border: 1px solid #ECE8F5;
+  border-radius: 28px;
+  box-shadow: 0 15px 55px rgba(55, 35, 100, 0.08);
+  background: white;
 }
 
-select {
-    width: 100%;
-    padding: 13px;
-    border-radius: 9px;
-    border: none;
-    font-size: 16px;
+.card-heading {
+  text-align: center;
+  margin-bottom: 28px;
 }
 
-button {
-    width: 100%;
-    padding: 15px;
-    margin-top: 20px;
-    border: none;
-    border-radius: 10px;
-    background: #ffcc70;
-    color: #17152b;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
+.card-heading h2 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 28px;
+  margin: 0 0 8px;
 }
 
-#result {
-    display: none;
-    background: #fff1d8;
-    color: #28243e;
-    padding: 22px;
-    border-radius: 15px;
-    margin-top: 25px;
+.card-heading p {
+  color: var(--muted);
+  margin: 0;
+  font-size: 14px;
 }
 
-#result h2 {
-    color: #8a4cbb;
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.field label {
+  display: block;
+  font-weight: 800;
+  font-size: 13px;
+  margin-bottom: 9px;
+}
+
+.field select {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #E7E2F0;
+  border-radius: 13px;
+  background: #FCFBFF;
+  color: var(--ink);
+  outline: none;
+  cursor: pointer;
+}
+
+.field select:focus {
+  border-color: var(--purple);
+}
+
+.primary-button {
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 15px;
+  background: var(--purple);
+  color: white;
+  font-weight: 800;
+  padding: 18px;
+  margin-top: 27px;
+  cursor: pointer;
+  box-shadow: 0 7px 18px rgba(112,72,216,0.2);
+  transition: transform .2s, background .2s;
+}
+
+.primary-button:hover {
+  background: #5935BD;
+  transform: translateY(-2px);
+}
+
+.result {
+  display: none;
+  margin-top: 28px;
+  padding: 26px;
+  border-radius: 20px;
+  background: var(--soft);
+  border: 1px solid #E9E1FF;
+  animation: appear .35s ease;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.result-tag {
+  color: var(--purple);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+.result h3 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 27px;
+  margin: 10px 0;
+}
+
+.result p {
+  color: #625D72;
+  line-height: 1.7;
+}
+
+.result-meta {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--purple);
+}
+
+.secondary-button {
+  border: 1px solid #D8CFF0;
+  background: white;
+  color: var(--purple);
+  border-radius: 12px;
+  padding: 12px 17px;
+  font-weight: 800;
+  cursor: pointer;
+  margin: 8px 8px 0 0;
+}
+
+.features {
+  padding: 65px 8%;
+  background: #FBFAFF;
+  text-align: center;
+}
+
+.features h2 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 34px;
+  margin: 0 0 12px;
+}
+
+.features-intro {
+  color: var(--muted);
+  margin-bottom: 35px;
+}
+
+.feature-grid {
+  max-width: 950px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.feature {
+  padding: 27px 18px;
+  background: white;
+  border: 1px solid #F0ECF7;
+  border-radius: 20px;
+}
+
+.feature-icon {
+  font-size: 35px;
+  margin-bottom: 12px;
+}
+
+.feature h3 {
+  font-family: 'Nunito', sans-serif;
+  margin: 8px 0;
+}
+
+.feature p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
 }
 
 footer {
-    text-align: center;
-    margin-top: 35px;
-    color: #aaa5bf;
+  text-align: center;
+  padding: 35px 20px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+footer strong { color: var(--purple); }
+
+@media (max-width: 600px) {
+  header { padding: 18px 6%; }
+  .hero { padding-top: 60px; }
+  .main-card { margin: 10px 15px 55px; padding: 23px 18px; }
+  .form-grid { grid-template-columns: 1fr; gap: 16px; }
+  .feature-grid { grid-template-columns: 1fr; }
+  .features { padding: 50px 20px; }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<header>
+  <div class="logo">
+    Moments <span>in a Minute.</span>
+    <small>LITTLE IDEAS. BIG MEMORIES.</small>
+  </div>
+  <a class="nav-link" href="#discover">Discover moments ✨</a>
+</header>
 
-    <h1>✨ MIX MY MOMENT</h1>
+<section class="hero">
+  <div class="eyebrow">✨ YOUR NEXT FAVORITE MEMORY STARTS HERE</div>
 
-    <p class="intro">
-        Stop overthinking. Start experiencing.
-        Let's turn an ordinary moment into an adventure!
-    </p>
+  <h1>
+    Life doesn't need a plan.<br>
+    <span class="purple">It needs a</span>
+    <span class="coral">moment.</span>
+  </h1>
 
-    <div class="panel">
+  <p class="hero-description">
+    Feeling adventurous, creative, or just a little bored?
+    Tell us what you're in the mood for. We'll find a little
+    something to make your day special.
+  </p>
 
-        <h2>Create your mission</h2>
+  <div class="decorations">🌈 🎨 ✨ 🎉</div>
+</section>
 
-        <label for="people">Who is participating?</label>
-        <select id="people">
-            <option>Just me</option>
-            <option>Two people</option>
-            <option>Friends</option>
-            <option>Family</option>
-        </select>
+<main class="main-card" id="discover">
+  <div class="card-heading">
+    <h2>Let's make something happen!</h2>
+    <p>A few little details. One fun surprise.</p>
+  </div>
 
-        <label for="budget">What's your budget?</label>
-        <select id="budget">
-            <option value="0">Free</option>
-            <option value="5">Up to $5</option>
-            <option value="15">Up to $15</option>
-            <option value="30">Up to $30</option>
-        </select>
+  <div class="form-grid">
 
-        <label for="time">How much time do you have?</label>
-        <select id="time">
-            <option value="15">15 minutes</option>
-            <option value="30">30 minutes</option>
-            <option value="60">1 hour</option>
-            <option value="120">2 hours</option>
-        </select>
-
-        <label for="vibe">What's your vibe?</label>
-        <select id="vibe">
-            <option value="creative">Creative</option>
-            <option value="adventure">Adventure</option>
-            <option value="relax">Relaxing</option>
-            <option value="fun">Just for fun</option>
-        </select>
-
-        <button onclick="createMission()">
-            CREATE MY MISSION ✨
-        </button>
-
+    <div class="field">
+      <label for="people">👯 Who's joining?</label>
+      <select id="people">
+        <option value="solo">Just me</option>
+        <option value="two">Two people</option>
+        <option value="friends">Friends</option>
+        <option value="family">Family</option>
+      </select>
     </div>
 
-    <div id="result">
-        <h2>Your mission is ready!</h2>
-        <h3 id="missionTitle"></h3>
-        <p id="missionDescription"></p>
-        <p id="missionDetails"></p>
-
-        <button onclick="shareMission()">
-            SHARE MY MISSION
-        </button>
-
-        <button onclick="createMission()">
-            GIVE ME ANOTHER MISSION
-        </button>
+    <div class="field">
+      <label for="budget">💰 What's your budget?</label>
+      <select id="budget">
+        <option value="0">Free</option>
+        <option value="5">Up to $5</option>
+        <option value="15">Up to $15</option>
+        <option value="30">Up to $30</option>
+      </select>
     </div>
 
-    <footer>
-        Made for moments worth remembering.
-    </footer>
+    <div class="field">
+      <label for="time">⏰ How much time do you have?</label>
+      <select id="time">
+        <option value="15">15 minutes</option>
+        <option value="30">30 minutes</option>
+        <option value="60">1 hour</option>
+        <option value="120">2 hours</option>
+      </select>
+    </div>
 
-</div>
+    <div class="field">
+      <label for="vibe">💜 What's your vibe?</label>
+      <select id="vibe">
+        <option value="any">Surprise me!</option>
+        <option value="creative">Creative 🎨</option>
+        <option value="adventure">Adventure 🌎</option>
+        <option value="relax">Relaxing 🌿</option>
+        <option value="fun">Just for fun 🎉</option>
+      </select>
+    </div>
+
+  </div>
+
+  <button class="primary-button" onclick="makeMoment()">
+    CREATE MY MOMENT ✨
+  </button>
+
+  <div class="result" id="result" aria-live="polite">
+    <div class="result-tag">YOUR LITTLE ADVENTURE AWAITS</div>
+    <h3 id="momentTitle"></h3>
+    <p id="momentDescription"></p>
+    <div class="result-meta" id="momentMeta"></div>
+    <button class="secondary-button" onclick="makeMoment()">🔄 Give me another</button>
+    <button class="secondary-button" onclick="shareMoment()">📲 Share this moment</button>
+  </div>
+</main>
+
+<section class="features">
+  <h2>Little moments. Big feelings.</h2>
+  <p class="features-intro">Because the best memories don't have to be complicated.</p>
+
+  <div class="feature-grid">
+    <div class="feature">
+      <div class="feature-icon">🎨</div>
+      <h3>Get creative</h3>
+      <p>Try something new, make something fun, and let your imagination run wild.</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">🌎</div>
+      <h3>Explore more</h3>
+      <p>Turn an ordinary afternoon into a little adventure.</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">💛</div>
+      <h3>Make memories</h3>
+      <p>Find simple ways to laugh, connect, and enjoy the people around you.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Made for the little things that make life special. <strong>Moments in a Minute.</strong> ✨
+</footer>
 
 <script>
-
-const missions = [
-    {
-        title: "The Photo Hunter 📸",
-        description: "Find five interesting things around you and take creative pictures of them.",
-        vibe: "creative",
-        cost: 0,
-        time: 15
-    },
-    {
-        title: "The Mini Adventure 🌳",
-        description: "Explore a nearby public place and discover something you've never noticed.",
-        vibe: "adventure",
-        cost: 0,
-        time: 30
-    },
-    {
-        title: "The Happiness Mission 💛",
-        description: "Do three small things that make you or someone else smile.",
-        vibe: "fun",
-        cost: 0,
-        time: 15
-    },
-    {
-        title: "The Creative Kitchen 🍓",
-        description: "Create a fun snack using ingredients you already have. Give it a creative name!",
-        vibe: "creative",
-        cost: 0,
-        time: 30
-    },
-    {
-        title: "The Sunset Mission 🌅",
-        description: "Find a safe place to watch the sunset and take a picture worth keeping.",
-        vibe: "relax",
-        cost: 0,
-        time: 60
-    },
-    {
-        title: "The $5 Challenge 💰",
-        description: "Find a fun, inexpensive treat or activity and make the most of five dollars.",
-        vibe: "adventure",
-        cost: 5,
-        time: 60
-    },
-    {
-        title: "The Memory Maker 🎉",
-        description: "Invent a silly group challenge and create a memory together.",
-        vibe: "fun",
-        cost: 0,
-        time: 30
-    },
-    {
-        title: "The Reset Moment 🌸",
-        description: "Take a break, enjoy a peaceful moment, and write down three things you appreciate.",
-        vibe: "relax",
-        cost: 0,
-        time: 15
-    }
+const moments = [
+  {
+    title: "The Photo Hunter 📸",
+    description: "Take a photo of something beautiful, something funny, and something you've never noticed before. Share your favorite!",
+    vibe: "creative", cost: 0, time: 15
+  },
+  {
+    title: "Your Mini Adventure 🌎",
+    description: "Choose a nearby place you've never explored. Take a little walk and discover something new.",
+    vibe: "adventure", cost: 0, time: 60
+  },
+  {
+    title: "The Happiness Mission 💛",
+    description: "Send someone a kind message, give a genuine compliment, or do one small thing to brighten somebody's day.",
+    vibe: "fun", cost: 0, time: 15
+  },
+  {
+    title: "Creative Kitchen Challenge 🍓",
+    description: "Create a fun snack using ingredients you already have. Give it a name like it's on a restaurant menu!",
+    vibe: "creative", cost: 5, time: 30
+  },
+  {
+    title: "The Sunset Mission 🌅",
+    description: "Find a comfortable spot, watch the sky change colors, and take a picture of your favorite moment.",
+    vibe: "relax", cost: 0, time: 30
+  },
+  {
+    title: "The Five-Dollar Challenge 💵",
+    description: "Find a small treat or surprise for yourself or someone you love. Make the most of your five-dollar budget!",
+    vibe: "fun", cost: 5, time: 30
+  },
+  {
+    title: "Memory Maker 💌",
+    description: "Look through old photos with someone you love. Pick one favorite memory and tell the story behind it.",
+    vibe: "relax", cost: 0, time: 30
+  },
+  {
+    title: "The Living Room Olympics 🏆",
+    description: "Create three silly challenges using things around your home. Keep score and crown a champion!",
+    vibe: "fun", cost: 0, time: 30
+  },
+  {
+    title: "Color Walk 🌈",
+    description: "Pick a color. Spend your walk finding five things around you that match it. Take pictures along the way.",
+    vibe: "adventure", cost: 0, time: 30
+  },
+  {
+    title: "A Little Reset 🌿",
+    description: "Put on your favorite music, make your favorite drink, and spend a few minutes doing absolutely nothing else.",
+    vibe: "relax", cost: 0, time: 15
+  },
+  {
+    title: "The Secret Artist 🎨",
+    description: "Draw a picture in five minutes. It can be silly, beautiful, or completely ridiculous. The goal is to have fun!",
+    vibe: "creative", cost: 0, time: 15
+  },
+  {
+    title: "The New Recipe Quest 🍽️",
+    description: "Try making a simple recipe you've never prepared before. Give your creation a rating out of ten.",
+    vibe: "creative", cost: 15, time: 60
+  }
 ];
 
-function createMission() {
+let currentMoment = null;
 
-    const budget = Number(
-        document.getElementById("budget").value
+function makeMoment() {
+  const budget = Number(document.getElementById("budget").value);
+  const time = Number(document.getElementById("time").value);
+  const vibe = document.getElementById("vibe").value;
+
+  let choices = moments.filter(moment =>
+    moment.cost <= budget &&
+    moment.time <= time &&
+    (vibe === "any" || moment.vibe === vibe)
+  );
+
+  if (choices.length === 0) {
+    choices = moments.filter(moment =>
+      moment.cost <= budget && moment.time <= time
     );
+  }
 
-    const time = Number(
-        document.getElementById("time").value
-    );
+  if (choices.length === 0) {
+    alert("Try increasing your time or budget a little!");
+    return;
+  }
 
-    const vibe = document.getElementById("vibe").value;
+  if (choices.length > 1 && currentMoment) {
+    choices = choices.filter(moment => moment !== currentMoment);
+  }
 
-    const available = missions.filter(m =>
-        m.vibe === vibe &&
-        m.cost <= budget &&
-        m.time <= time
-    );
+  currentMoment = choices[Math.floor(Math.random() * choices.length)];
 
-    const options = available.length > 0
-        ? available
-        : missions.filter(m =>
-            m.cost <= budget && m.time <= time
-        );
+  document.getElementById("momentTitle").textContent = currentMoment.title;
+  document.getElementById("momentDescription").textContent = currentMoment.description;
+  document.getElementById("momentMeta").textContent =
+    "⏰ " + currentMoment.time + " minutes  •  💰 $" + currentMoment.cost + " or less";
 
-    if (options.length === 0) {
-        alert("Try increasing your available time!");
-        return;
-    }
-
-    const mission = options[
-        Math.floor(Math.random() * options.length)
-    ];
-
-    document.getElementById("missionTitle").textContent =
-        mission.title;
-
-    document.getElementById("missionDescription").textContent =
-        mission.description;
-
-    document.getElementById("missionDetails").textContent =
-        "Budget: $" + mission.cost +
-        " | Estimated time: " + mission.time + " minutes";
-
-    document.getElementById("result").style.display = "block";
-
+  const result = document.getElementById("result");
+  result.style.display = "block";
+  result.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
-function shareMission() {
+async function shareMoment() {
+  if (!currentMoment) return;
 
-    const title = document.getElementById("missionTitle").textContent;
-    const description = document.getElementById("missionDescription").textContent;
+  const message =
+    "✨ My moment from Moments in a Minute!\n\n" +
+    currentMoment.title + "\n" +
+    currentMoment.description +
+    "\n\nDiscover your own moment!";
 
-    const text = "My Mix My Moment mission: " +
-        title + " " + description;
-
-    if (navigator.share) {
-        navigator.share({
-            title: "Mix My Moment",
-            text: text,
-            url: window.location.href
-        });
-    } else if (navigator.clipboard) {
-        navigator.clipboard.writeText(text)
-            .then(() => alert("Mission copied! Share it with your friends."));
-    } else {
-        alert(text);
+  if (navigator.share) {
+    try {
+      await navigator.share({ title: "Moments in a Minute", text: message });
+    } catch (error) {
+      if (error.name !== "AbortError") {
+        alert("Sharing isn't available right now. You can copy the moment instead!");
+      }
     }
-
+  } else {
+    try {
+      await navigator.clipboard.writeText(message);
+      alert("Your moment has been copied! Share it with someone. 💛");
+    } catch (error) {
+      alert(message);
+    }
+  }
 }
-
 </script>
 
 </body>
