@@ -534,6 +534,7 @@ function makeMoment() {
 }
 
 
+
 async function shareMoment() {
   if (!currentMoment) return;
 
@@ -543,8 +544,7 @@ async function shareMoment() {
     "✨ A little moment from Moments in a Minute!\n\n" +
     "💛 " + currentMoment.title + "\n\n" +
     currentMoment.description +
-    "\n\n" +
-    "Little moments. Big feelings. ✨\n\n" +
+    "\n\nLittle moments. Big feelings. ✨\n\n" +
     "Discover your next little adventure:\n" +
     siteUrl;
 
@@ -552,7 +552,8 @@ async function shareMoment() {
     try {
       await navigator.share({
         title: "Moments in a Minute ✨",
-        text: message
+        text: message,
+        url: siteUrl
       });
     } catch (error) {
       if (error.name !== "AbortError") {
@@ -568,33 +569,3 @@ async function shareMoment() {
     }
   }
 }
-
-  if (!currentMoment) return;
-
-  const message =
-    "✨ My moment from Moments in a Minute!\n\n" +
-    currentMoment.title + "\n" +
-    currentMoment.description +
-    "\n\nDiscover your own moment!";
-
-  if (navigator.share) {
-    try {
-      await navigator.share({ title: "Moments in a Minute", text: message });
-    } catch (error) {
-      if (error.name !== "AbortError") {
-        alert("Sharing isn't available right now. You can copy the moment instead!");
-      }
-    }
-  } else {
-    try {
-      await navigator.clipboard.writeText(message);
-      alert("Your moment has been copied! Share it with someone. 💛");
-    } catch (error) {
-      alert(message);
-    }
-  }
-}
-</script>
-
-</body>
-</html>
