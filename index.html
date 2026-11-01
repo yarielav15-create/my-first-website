@@ -533,7 +533,42 @@ function makeMoment() {
   result.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
+
 async function shareMoment() {
+  if (!currentMoment) return;
+
+  const siteUrl = "https://yarielav15-create.github.io/my-first-website/";
+
+  const message =
+    "✨ A little moment from Moments in a Minute!\n\n" +
+    "💛 " + currentMoment.title + "\n\n" +
+    currentMoment.description +
+    "\n\n" +
+    "Little moments. Big feelings. ✨\n\n" +
+    "Discover your next little adventure:\n" +
+    siteUrl;
+
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: "Moments in a Minute ✨",
+        text: message
+      });
+    } catch (error) {
+      if (error.name !== "AbortError") {
+        alert("Couldn't share right now. Please try again!");
+      }
+    }
+  } else {
+    try {
+      await navigator.clipboard.writeText(message);
+      alert("Your moment is ready to share! 💛");
+    } catch (error) {
+      alert(message);
+    }
+  }
+}
+
   if (!currentMoment) return;
 
   const message =
